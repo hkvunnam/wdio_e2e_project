@@ -1,0 +1,20 @@
+{
+  "name": "wdio_e2e_project",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.24.12",
+    "@wdio/cli": "^8.26.1",
+    "@wdio/cucumber-framework": "^8.24.13",
+    "@wdio/local-runner": "^8.26.1",
+    "@wdio/spec-reporter": "^8.24.12",
+    "chai": "^4.3.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.ts"
+  },
+  "dependencies": {
+    "@types/chai": "^4.3.11"
+  }
+}
