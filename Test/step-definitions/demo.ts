@@ -27,3 +27,25 @@ Then(/^url should match (.*)$/, async function (expectedUrl) {
     let url = await browser.getUrl();
     chai.expect(url).to.equal(expectedUrl)
 })
+
+Given(/^Open a browser$/, async function () {
+  await browser.url("/inputs")
+  await browser.setTimeout({implicit:1500, pageLoad: 2000})
+  await browser.maximizeWindow
+  await browser.pause(2000)
+})
+
+When(/^Perform Webinteractions$/, async function(){
+  //let inputLink = await $(`//a[contains(.,'Inputs')]`)
+  let inputBox = await $(`<input>`)
+  //chai.expect(inputLink.isEnabled).to.true
+  //inputLink.click
+  //chai.expect(inputBox.isEnabled).to.true
+  inputBox.setValue("25")
+  await browser.pause(1000)
+  inputBox.clearValue
+})
+
+Then(/^Close the browser$/, async function(){
+  await browser.closeWindow
+})
