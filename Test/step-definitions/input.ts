@@ -35,7 +35,7 @@ Then(/^url should match (.*)$/, async function (expectedUrl) {
 
 Given(/^Open a browser$/, async function () {
   //appending the existing baseurl
-  await browser.url("/frames")
+  await browser.url("/tables")
   //setting timeouts before execution as failure
   await browser.setTimeout({implicit:1500, pageLoad: 2000})
   await browser.maximizeWindow
@@ -178,16 +178,64 @@ Then(/^Click on the link and traverse through the windows opened$/, async functi
 
   //Handeling Frames
 
-  await $(`=iFrame`).click()
-  let frame = await $(`#mce_0_ifr`)
-  await browser.switchToFrame(frame)
-  await $(`#tinymce`).click()
-  await browser.keys(["Control","A"])
-  await browser.pause(1000)
-  await browser.keys("Delete")
-  await $(`#tinymce`).addValue("Typing in frames")
-  await browser.switchToParentFrame()
+  // await $(`=iFrame`).click()
+  // let frame = await $(`#mce_0_ifr`)
+  // await browser.switchToFrame(frame)
+  // await $(`#tinymce`).click()
+  // await browser.keys(["Control","A"])
+  // await browser.pause(1000)
+  // await browser.keys("Delete")
+  // await $(`#tinymce`).addValue("Typing in frames")
+  // await browser.switchToParentFrame()
+  
+
+  //Handeling the List of Web Elements
+  // let prArr = []
+  // await $(`input[id="user-name"]`).setValue("standard_user")
+  // await $(`input[id="password"]`).setValue("secret_sauce")
+  // await $(`input[id="login-button"]`).click()
+  // let listOfItems = await $$(`//div[@class='inventory_item_name']`)
+  // let listOfPrice = await $$(`//div[@class='inventory_item_price']`)
+  // for(let i = 0; i < listOfItems.length; i++){
+  //   let item = listOfItems[i]
+  //   let itemName = await item.getText()
+  //   let price = await listOfPrice[i].getText()
+  //   prArr.push(price)
+  //   console.log(`Item Name: ${itemName}, Price: ${price}`)
+  // }
+  // let pric = await prArr.map(priceA => parseInt(priceA.replace("$","")))
+  // console.log(`>>Item Prices $: ${pric}`)
+
+  //Handeling WebTables
+  // let tableRows = await $$(`//table[@id='table1']/tbody/tr`)
+  // let tableColumns = await $$(`//table[@id='table1']/thead/tr/th`)
+  // let arr = []
+  // for(let i = 1; i<=tableRows.length; i++){
+  //   let cellObj = {
+  //     lastName: "",
+  //     firstName: "",
+  //     email: "",
+  //     due: "",
+  //     website: ""
+  //   }
+  //   for(let j = 1; j< tableColumns.length; j++){
+  //     let content = await $(`//table[@id='table1']/tbody/tr[${i}]/td[${j}]`).getText()
+  //     let firstName = await $(`//table[@id='table1']/tbody/tr[${i}]/td[2]`).getText()
+  //     if(firstName === "Jason"){
+  //     if(j===1) cellObj.lastName = content
+  //     if(j===2) cellObj.firstName = content
+  //     if(j===3) cellObj.email = content
+  //     if(j===4) cellObj.due = content
+  //     if(j===5) cellObj.website = content
+  //     //console.log(`>>Value of the Cell: ${content}`)
+  //     } 
+  //   }
+  //   if(cellObj.firstName){
+  //   arr.push(cellObj)
+  //   }
+  // }
+  // console.log(`>>table contents: ${JSON.stringify(arr)}`)
+
+  
   await browser.debug();
-
-
 })
