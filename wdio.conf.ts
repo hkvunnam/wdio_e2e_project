@@ -60,7 +60,12 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        "goog:chromeOptions": {
+            args: ["--disable-web-security"]
+        },
+        acceptInsecureCerts: true,
+        timeouts: {implicit: 10000, pageLoad: 15000, script: 20000},
     }],
 
     //
@@ -95,7 +100,7 @@ export const config: WebdriverIO.Config = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     //https://admin:admin@the-internet.herokuapp.com/ - for basic auth
-    baseUrl: 'https://the-internet.herokuapp.com/',
+    baseUrl: 'https://www.amazon.in/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -155,7 +160,7 @@ export const config: WebdriverIO.Config = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '@window',
+        tagExpression: '',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
