@@ -3,7 +3,7 @@ Feature: login to OrangeHRM page
 Background: launch Browser
 Given launch browser and Navigate to url
 
-@login
+@demo
 Scenario: Login with Credentials
 Given Verify the <currentUrl>
 When  login with <user> and <pwd>

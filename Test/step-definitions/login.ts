@@ -16,13 +16,13 @@ When(/^login with (.*) and (.*)$/, async function(user, pass){
     let userName = await $(`input[name=username]`)
     let passWd = await $(`input[name=password]`)
     let login = await $(`button[type=submit]`)
-    userName.setValue(user)
-    passWd.setValue(pass)
+    userName.setValue(process.env.user)
+    passWd.setValue(process.env.password)
     login.click
     await browser.pause(2000)
 })
 
 Then(/^Verify the login status$/, async function(){
-    let dashboard = (await $(`h6[class*=oxd-text]`)).isDisplayed
+    let dashboard = await $(`h6[class*=oxd-text]`).isDisplayed
     chai.expect(dashboard).to.true
 })
