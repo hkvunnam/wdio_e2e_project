@@ -1,7 +1,7 @@
 Feature: demo
 
 
-    @demo
+    @demo @smoke
     Scenario Outline: navigate to wido
     Given open <url>
     Then search for <word>
