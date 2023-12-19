@@ -25,6 +25,10 @@ Then(/^click on wdio webpage$/, async function () {
   //gives the current url
   let url = await browser.getUrl();
   console.log(`>>Current URL: ${url}`);
+  await browser.waitUntil(async function(){
+    return await browser.getTitle() === "WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO"
+  }, {timeout: 20000, interval: 500, timeoutMsg: `Title not Found! ${await browser.getTitle()}`})
+  console.log(await browser.getTitle())
 });
 
 Then(/^url should match (.*)$/, async function (expectedUrl) {
@@ -35,7 +39,7 @@ Then(/^url should match (.*)$/, async function (expectedUrl) {
 
 Given(/^Open a browser$/, async function () {
   //appending the existing baseurl
-  await browser.url("/tables")
+  await browser.url("")
   //setting timeouts before execution as failure
   await browser.setTimeout({implicit:1500, pageLoad: 2000})
   await browser.maximizeWindow
@@ -235,6 +239,27 @@ Then(/^Click on the link and traverse through the windows opened$/, async functi
   //   }
   // }
   // console.log(`>>table contents: ${JSON.stringify(arr)}`)
+
+  //Scrolling through the pages
+  // await browser.execute(() => {
+  //   //scrolls down till the active visible browser page
+  //   window.scrollBy(0, window.innerHeight)
+  // })
+  // await browser.pause(2000) 
+  // //Scroll UP
+  // await browser.execute(() => {
+  //   //scrolls down till the active visible browser page
+  //   window.scrollBy(0, -window.innerHeight)
+  // })
+  // await browser.pause(2000)
+  // await browser.execute(()=>{
+  //   window.scrollTo(0, document.body.scrollHeight)
+  // })
+  // await browser.pause(2000)
+  // await browser.execute(()=>{
+  //   window.scrollTo(0, document.body.scrollTop)
+  // })
+
 
   
   await browser.debug();
